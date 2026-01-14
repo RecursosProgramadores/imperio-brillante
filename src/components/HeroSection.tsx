@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-rice-fields.jpg";
 
-const WHATSAPP_LINK = "https://wa.me/51999999999?text=Hola,%20quiero%20información%20sobre%20servicios%20de%20Molino%20Imperio";
+const WHATSAPP_LINK = "https://wa.me/5193389123?text=Hola,%20quiero%20información%20sobre%20servicios%20de%20Molino%20Imperio";
 
 const HeroSection = () => {
   const scrollToServices = () => {
@@ -26,7 +26,7 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 container-custom px-4 md:px-8 py-32 md:py-40">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl text-left">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-background leading-tight mb-6 animate-slide-up">
             Molino Imperio – Procesos industriales que respetan el grano y optimizan su valor.
           </h1>
