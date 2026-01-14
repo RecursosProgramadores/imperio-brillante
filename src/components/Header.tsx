@@ -10,7 +10,7 @@ const navItems = [
   { label: "Contacto", href: "#contacto" },
 ];
 
-const WHATSAPP_LINK = "https://wa.me/51999999999?text=Hola,%20quiero%20información%20sobre%20servicios%20de%20Molino%20Imperio";
+const WHATSAPP_LINK = "https://wa.me/5193389123?text=Hola,%20quiero%20información%20sobre%20servicios%20de%20Molino%20Imperio";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);

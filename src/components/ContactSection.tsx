@@ -1,7 +1,7 @@
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const WHATSAPP_LINK = "https://wa.me/51999999999?text=Hola,%20quiero%20información%20sobre%20Molino%20Imperio";
+const WHATSAPP_LINK = "https://wa.me/5193389123?text=Hola,%20quiero%20información%20sobre%20Molino%20Imperio";
 
 const contactInfo = [
   {
@@ -12,12 +12,12 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Teléfono",
-    content: "+51 999 999 999"
+    content: "+51 933 891 23"
   },
   {
     icon: Mail,
-    title: "Email",
-    content: "ventas@molinoimperio.com"
+    title: "Emails",
+    content: "molinoimperio@gmail.com / lidser.panduro@gmail.com"
   },
   {
     icon: Clock,
@@ -71,7 +71,7 @@ const ContactSection = () => {
             {/* Google Maps */}
             <div className="rounded-2xl overflow-hidden shadow-lg h-64 md:h-80">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248424.15867731658!2d-74.7016!3d-8.4077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91a9351b18bdab21%3A0x8f87e789f46b6d5c!2sPucallpa%2C%20Ucayali%2C%20Per%C3%BA!5e0!3m2!1ses!2s!4v1704912345678!5m2!1ses!2s"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.134876885779!2d-74.5812646!3d-8.388392299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91a3bd5e1e53ebd3%3A0x4d1ccade129d3f13!2sMolino%20Imperio!5e0!3m2!1ses!2spe!4v1768244527595!5m2!1ses!2spe"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
