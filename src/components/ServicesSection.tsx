@@ -8,7 +8,7 @@ import { es } from "date-fns/locale";
 import trans1 from "@/assets/transformacion1.jpg";
 import trans2 from "@/assets/transformacion2.jpg";
 import trans3 from "@/assets/transformacion3.jpg";
-import anejo1 from "@/assets/anejo1 (1).jpg";
+import anejo1 from "@/assets/anejo1.jpg";
 import anejo2 from "@/assets/anejo2.jpg";
 import anejo3 from "@/assets/anejo3.jpg";
 
