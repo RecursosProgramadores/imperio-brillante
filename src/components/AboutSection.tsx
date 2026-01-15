@@ -1,5 +1,5 @@
 import { CheckCircle, Shield, Award, TrendingUp } from "lucide-react";
-import industrialMill from "@/assets/industrial-mill.jpg";
+import industrialMill from "@/assets/industrial-mill.webp";
 
 const features = [
   {

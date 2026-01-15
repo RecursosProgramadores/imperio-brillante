@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Mountain } from "lucide-react";
-import heroImage from "@/assets/header.png";
-import riceBag from "@/assets/costalazul.png";
+import heroImage from "@/assets/plantain.webp";
+import mobileHero from "@/assets/imagemovile.jpg";
 
 const WHATSAPP_LINK = "https://wa.me/5193389123?text=Hola,%20quiero%20información%20sobre%20servicios%20de%20Molino%20Imperio";
 
@@ -44,9 +44,9 @@ const HeroSection = () => {
             Transformamos arroz cáscara en arroz de alta calidad. Especialistas en secado, pilado y arroz añejo Altomonte.
           </p>
 
-          {/* Rice Bag Image - Foreground on Mobile */}
-          <div className="md:hidden w-full max-w-[220px] mb-8 animate-scale-in" style={{ animationDelay: "0.2s" }}>
-            <img src={riceBag} alt="Arroz Altomonte" className="w-full h-auto drop-shadow-2xl" />
+          {/* Mobile Image - Foreground */}
+          <div className="md:hidden w-full max-w-[280px] mb-8 animate-scale-in" style={{ animationDelay: "0.2s" }}>
+            <img src={mobileHero} alt="Arroz Altomonte" className="w-full h-auto drop-shadow-2xl rounded-2xl" />
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 animate-slide-up justify-center md:justify-start w-full sm:w-auto" style={{ animationDelay: "0.3s" }}>

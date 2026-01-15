@@ -5,6 +5,7 @@ import ProductsSection from "@/components/ProductsSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import bannerImage from "@/assets/portada-alto-monte.webp";
 
 const Index = () => {
   return (
@@ -14,6 +15,16 @@ const Index = () => {
         <HeroSection />
         <ServicesSection />
         <ProductsSection />
+        
+        {/* Full-width Product Banner */}
+        <section className="w-full overflow-hidden">
+          <img 
+            src={bannerImage} 
+            alt="Arroz Altomonte Banner" 
+            className="w-full h-auto object-cover"
+          />
+        </section>
+
         <AboutSection />
         <ContactSection />
       </main>
