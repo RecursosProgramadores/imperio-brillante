@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLocation, useNavigate, Link } from "react-router-dom";
+import logoBlanco from "@/assets/logoblanco.png";
 
 const navItems = [
   { label: "Inicio", href: "#inicio" },
@@ -15,6 +17,8 @@ const WHATSAPP_LINK = "https://wa.me/5193389123?text=Hola,%20quiero%20informaci�
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,35 +29,54 @@ const Header = () => {
   }, []);
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: href } });
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
     setIsMobileMenuOpen(false);
   };
 
+  // Effect to handle scroll after navigation to home
+  useEffect(() => {
+    if (location.pathname === "/" && location.state?.scrollTo) {
+      const targetHash = location.state.scrollTo;
+      setTimeout(() => {
+        const element = document.querySelector(targetHash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+        // Clear state to avoid scrolling again on manual refresh
+        window.history.replaceState({}, document.title);
+      }, 100);
+    }
+  }, [location]);
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/20 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-md py-3"
-          : "bg-transparent py-4"
+          ? "bg-background/95 backdrop-blur-md shadow-md py-2 md:py-3"
+          : "bg-transparent py-3 md:py-4"
       }`}
     >
-      <div className="container-custom flex items-center justify-between px-4 md:px-8">
+      <div className="container-custom px-4 md:px-8 flex items-center justify-between">
         {/* Logo */}
-        <a
-          href="#inicio"
+        <Link
+          to="/"
           onClick={(e) => {
-            e.preventDefault();
-            scrollToSection("#inicio");
+            if (location.pathname === "/") {
+              e.preventDefault();
+              scrollToSection("#inicio");
+            }
           }}
           className="flex items-center gap-2"
         >
-          <span className="text-2xl md:text-3xl font-bold text-foreground">
-            Molino <span className="text-primary">Imperio</span>
-          </span>
-        </a>
+          <img src={logoBlanco} alt="Molino Imperio Logo" className="h-14 md:h-16 w-auto" />
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
@@ -65,8 +88,8 @@ const Header = () => {
                 e.preventDefault();
                 scrollToSection(item.href);
               }}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isScrolled ? "text-foreground" : "text-foreground"
+              className={`text-lg font-medium transition-colors hover:text-primary ${
+                isScrolled ? "text-foreground" : "text-white"
               }`}
             >
               {item.label}
@@ -100,18 +123,30 @@ const Header = () => {
       >
         <nav className="flex flex-col p-4 gap-4">
           {navItems.map((item) => (
-            <a
+            <button
               key={item.label}
-              href={item.href}
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection(item.href);
-              }}
-              className="text-foreground font-medium py-2 hover:text-primary transition-colors"
+              onClick={() => scrollToSection(item.href)}
+              className="text-left text-foreground font-medium py-2 hover:text-primary transition-colors border-b border-border/50"
             >
               {item.label}
-            </a>
+            </button>
           ))}
+          <div className="flex flex-col gap-2 mt-2">
+            <Link 
+              to="/terms" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-sm text-muted-foreground hover:text-primary"
+            >
+              Términos y condiciones
+            </Link>
+            <Link 
+              to="/privacy" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-sm text-muted-foreground hover:text-primary"
+            >
+              Política de privacidad
+            </Link>
+          </div>
           <Button asChild variant="default" className="w-full">
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
