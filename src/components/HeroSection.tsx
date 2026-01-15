@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Mountain } from "lucide-react";
 import heroImage from "@/assets/plantain.webp";
-import mobileHero from "@/assets/imagemovile.jpg";
+import mobileHero from "@/assets/plitnmovile.jpg";
 
 const WHATSAPP_LINK = "https://wa.me/5193389123?text=Hola,%20quiero%20información%20sobre%20servicios%20de%20Molino%20Imperio";
 
@@ -18,11 +18,21 @@ const HeroSection = () => {
       id="inicio"
       className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-[#0f5c2e]"
     >
-      {/* Background for Desktop */}
+      {/* Background for Desktop & Mobile */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
+        style={{ backgroundImage: `url(${mobileHero})` }}
+      >
+        {/* Capa oscura en móviles (más oscura) */}
+        <div className="absolute inset-0 bg-black/70" />
+      </div>
       <div
         className="absolute inset-0 hidden md:block bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
-      />
+      >
+        {/* Capa oscura en desktop (más oscura) */}
+        <div className="absolute inset-0 bg-black/70" />
+      </div>
 
       {/* Content */}
       <div className="relative z-10 w-full pt-20 pb-12 md:py-40 flex flex-col items-center md:items-start md:flex-row md:justify-start px-6 md:pl-20">
@@ -44,10 +54,7 @@ const HeroSection = () => {
             Transformamos arroz cáscara en arroz de alta calidad. Especialistas en secado, pilado y arroz añejo Altomonte.
           </p>
 
-          {/* Mobile Image - Foreground */}
-          <div className="md:hidden w-full max-w-[280px] mb-8 animate-scale-in" style={{ animationDelay: "0.2s" }}>
-            <img src={mobileHero} alt="Arroz Altomonte" className="w-full h-auto drop-shadow-2xl rounded-2xl" />
-          </div>
+          {/* Mobile Image - Foreground (removido, ahora es fondo) */}
 
           <div className="flex flex-col sm:flex-row gap-4 animate-slide-up justify-center md:justify-start w-full sm:w-auto" style={{ animationDelay: "0.3s" }}>
             <Button
