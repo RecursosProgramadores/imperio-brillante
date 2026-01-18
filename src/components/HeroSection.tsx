@@ -3,7 +3,7 @@ import { Mountain } from "lucide-react";
 import heroImage from "@/assets/plantain.webp";
 import mobileHero from "@/assets/plitnmovile.jpg";
 
-const WHATSAPP_LINK = "https://wa.me/5193389123?text=Hola,%20quiero%20información%20sobre%20servicios%20de%20Molino%20Imperio";
+const WHATSAPP_LINK = "https://wa.me/51933897123?text=Hola,%20quiero%20información%20sobre%20servicios%20de%20Molino%20Imperio";
 
 const HeroSection = () => {
   const scrollToServices = () => {
@@ -46,12 +46,12 @@ const HeroSection = () => {
           </div>
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 md:mb-6 animate-slide-up drop-shadow-md">
-            Nuestro imperio - Procesos. <br className="hidden md:block" />
+            Nuestro imperio.<br className="hidden md:block" />
             Procesos que respetan el arroz y optimizan su valor.
           </h1>
-          
+
           <p className="text-base md:text-xl text-white/90 mb-6 md:mb-8 max-w-2xl animate-slide-up" style={{ animationDelay: "0.1s" }}>
-            Transformamos arroz cáscara en arroz de alta calidad. Especialistas en secado, pilado y arroz añejo Altomonte.
+            Especialistas en secado, pilado y arroz añejo Altomonte. Transformamos arroz cáscara en arroz de alta calidad.
           </p>
 
           {/* Mobile Image - Foreground (removido, ahora es fondo) */}

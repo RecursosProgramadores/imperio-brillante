@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
-import { Wheat, Timer, Sparkles, RefreshCw, Wind, Box, Calendar } from "lucide-react";
+import { Wheat, Timer, Sparkles, RefreshCw, Wind, Box, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 
-import trans1 from "@/assets/transformacion1.jpg";
-import trans2 from "@/assets/transformacion2.jpg";
-import trans3 from "@/assets/transformacion3.jpg";
-import anejo1 from "@/assets/anejo1.jpg";
-import anejo2 from "@/assets/anejo2.jpg";
-import anejo3 from "@/assets/anejo3.jpg";
+import trans1 from "@/assets/secadoraindustrial.jpeg";
+import trans2 from "@/assets/plantapilado.jpeg";
+import trans3 from "@/assets/Añejadoras.jpeg";
+import anejo1 from "@/assets/Silosalmacenaje.jpeg";
+import anejo2 from "@/assets/Almacenarrozcascara.jpeg";
+import anejo3 from "@/assets/selectoraoptica.jpeg";
 
-const WHATSAPP_BASE = "https://wa.me/51999999999?text=";
+const WHATSAPP_BASE = "https://wa.me/51933897123?text=";
 
 const services = [
   {
@@ -67,23 +67,24 @@ const services = [
   }
 ];
 
-const MainCarouselItem = ({ service }: { service: typeof services[0] }) => {
+const ServiceItem = ({ service, index }: { service: typeof services[0], index: number }) => {
   const [api, setApi] = useState<CarouselApi>();
+  const isReversed = index % 2 === 1;
 
   useEffect(() => {
     if (!api) return;
 
     const interval = setInterval(() => {
       api.scrollNext();
-    }, 2000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [api]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-card rounded-3xl overflow-hidden shadow-xl border border-border/50">
-      {/* Image Carousel (Left) */}
-      <div className="relative aspect-video lg:aspect-square overflow-hidden">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center bg-card rounded-[3rem] overflow-hidden shadow-2xl border border-border/50 transition-all duration-500 hover:shadow-primary/5">
+      {/* Image Carousel */}
+      <div className={`relative aspect-video lg:aspect-square overflow-hidden group ${isReversed ? "order-2 lg:order-2" : "order-1 lg:order-1"}`}>
         <Carousel setApi={setApi} opts={{ loop: true }} className="w-full h-full">
           <CarouselContent>
             {service.images.map((img, idx) => (
@@ -100,34 +101,54 @@ const MainCarouselItem = ({ service }: { service: typeof services[0] }) => {
             ))}
           </CarouselContent>
         </Carousel>
+
+        {/* Inner arrows for images */}
+        <div className="absolute bottom-6 right-6 flex gap-2 opacity-0 group-hover:opacity-100 lg:group-hover:opacity-100 transition-opacity z-10">
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => api?.scrollPrev()}
+            className="rounded-full h-10 w-10 bg-black/20 border-white/40 text-white hover:bg-white hover:text-primary backdrop-blur-md transition-all active:scale-90"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => api?.scrollNext()}
+            className="rounded-full h-10 w-10 bg-black/20 border-white/40 text-white hover:bg-white hover:text-primary backdrop-blur-md transition-all active:scale-90"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </Button>
+        </div>
       </div>
 
-      {/* Content (Right) */}
-      <div className="p-8 lg:p-12">
-        <div className="flex items-center gap-4 mb-6">
-          <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-            <service.icon className="w-7 h-7 text-primary" />
+      {/* Content */}
+      <div className={`p-8 lg:p-16 ${isReversed ? "order-1 lg:order-1" : "order-2 lg:order-2"}`}>
+        <div className="flex items-center gap-5 mb-8">
+          <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center shadow-inner">
+            <service.icon className="w-8 h-8 text-primary" />
           </div>
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+          <h3 className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight">
             {service.title}
           </h3>
         </div>
 
-        <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+        <p className="text-muted-foreground text-lg mb-10 leading-relaxed font-light">
           {service.description}
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {service.features.map((feature, index) => (
-            <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-secondary/50 border border-border/50">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <feature.icon className="w-5 h-5 text-primary" />
+            <div key={index} className="flex items-start gap-4 p-5 rounded-2xl bg-secondary/30 border border-border/30 hover:border-primary/20 transition-colors group/feat">
+              <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center flex-shrink-0 shadow-sm group-hover/feat:bg-primary group-hover/feat:text-white transition-all">
+                <feature.icon className="w-5 h-5 text-primary group-hover/feat:text-white" />
               </div>
               <div>
-                <h4 className="font-semibold text-foreground text-sm mb-1">
+                <h4 className="font-bold text-foreground text-base mb-1">
                   {feature.title}
                 </h4>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs text-muted-foreground leading-snug">
                   {feature.description}
                 </p>
               </div>
@@ -135,13 +156,13 @@ const MainCarouselItem = ({ service }: { service: typeof services[0] }) => {
           ))}
         </div>
 
-        <Button asChild variant="default" size="lg" className="w-full md:w-auto h-14 px-8 text-lg font-semibold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20">
+        <Button asChild variant="default" size="lg" className="w-full md:w-auto h-16 px-10 text-lg font-bold rounded-2xl transition-all hover:scale-105 active:scale-95 shadow-xl shadow-primary/20 bg-primary hover:bg-primary/90">
           <a
             href={`${WHATSAPP_BASE}${encodeURIComponent(service.whatsappMessage)}`}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Solicitar cotización
+            Solicitar cotización personalizada
           </a>
         </Button>
       </div>
@@ -150,18 +171,6 @@ const MainCarouselItem = ({ service }: { service: typeof services[0] }) => {
 };
 
 const ServicesSection = () => {
-  const [mainApi, setMainApi] = useState<CarouselApi>();
-  const currentDate = format(new Date(), "eeee, d 'de' MMMM 'de' yyyy", { locale: es });
-
-  useEffect(() => {
-    if (!mainApi) return;
-
-    const interval = setInterval(() => {
-      mainApi.scrollNext();
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [mainApi]);
 
   return (
     <section id="servicios" className="section-padding bg-secondary/30 relative overflow-hidden">
@@ -180,40 +189,11 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        {/* Main Services Carousel */}
-        <div className="relative px-4">
-          <Carousel setApi={setMainApi} opts={{ loop: true }} className="w-full max-w-6xl mx-auto">
-            <CarouselContent>
-              {services.map((service) => (
-                <CarouselItem key={service.id}>
-                  <MainCarouselItem service={service} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            {/* Custom Navigation (visible on desktop) */}
-            <div className="hidden lg:block">
-              <div className="absolute top-1/2 -left-16 -translate-y-1/2">
-                <Button 
-                  variant="outline" 
-                  size="icon" 
-                  onClick={() => mainApi?.scrollPrev()}
-                  className="rounded-full h-12 w-12 border-primary/20 hover:bg-primary hover:text-white transition-all shadow-md"
-                >
-                  <RefreshCw className="w-6 h-6 rotate-180" />
-                </Button>
-              </div>
-              <div className="absolute top-1/2 -right-16 -translate-y-1/2">
-                <Button 
-                  variant="outline" 
-                  size="icon" 
-                  onClick={() => mainApi?.scrollNext()}
-                  className="rounded-full h-12 w-12 border-primary/20 hover:bg-primary hover:text-white transition-all shadow-md"
-                >
-                  <RefreshCw className="w-6 h-6" />
-                </Button>
-              </div>
-            </div>
-          </Carousel>
+        {/* Services List (Alternating) */}
+        <div className="space-y-16 md:space-y-24">
+          {services.map((service, index) => (
+            <ServiceItem key={service.id} service={service} index={index} />
+          ))}
         </div>
 
         {/* Bottom Tagline */}

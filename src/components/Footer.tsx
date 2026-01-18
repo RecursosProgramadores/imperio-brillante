@@ -5,9 +5,9 @@ import devLogo from "@/assets/logo.svg";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 
 const TikTokIcon = () => (
-// ... (rest of TikTokIcon)
+  // ... (rest of TikTokIcon)
   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
   </svg>
 );
 
@@ -85,7 +85,7 @@ const Footer = () => {
               <img src={logoMolino} alt="Molino Imperio Logo" className="h-20 w-auto rounded-lg" />
             </a>
             <p className="text-white/70 text-sm leading-relaxed">
-              Especialistas en el procesamiento integral de arroz de alta calidad. 
+              Especialistas en el procesamiento integral de arroz de alta calidad.
               Transformamos arroz cáscara optimizando su valor con procesos técnicos avanzados.
             </p>
             <div className="flex items-center gap-4">
@@ -132,9 +132,21 @@ const Footer = () => {
                 <MapPin className="w-5 h-5 text-primary shrink-0" />
                 <span>Carr. Federico Basadre Km 12, Pucallpa</span>
               </div>
-              <div className="flex items-center gap-3 text-white/70 text-sm">
-                <Phone className="w-5 h-5 text-primary shrink-0" />
-                <span>+51 933 891 230</span>
+              <div className="flex flex-col gap-3">
+                <div className="flex items-start gap-3 text-white/70 text-sm">
+                  <Phone className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <div className="flex flex-col gap-2">
+                    <a href="https://wa.me/51933897123" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                      +51 933 897 123 (Ventas)
+                    </a>
+                    <a href="https://wa.me/51964421656" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                      +51 964 421 656 (Planta 1)
+                    </a>
+                    <a href="https://wa.me/51961502572" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                      +51 961 502 572 (Planta 2)
+                    </a>
+                  </div>
+                </div>
               </div>
               <div className="flex items-center gap-3 text-white/70 text-sm">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
@@ -146,9 +158,9 @@ const Footer = () => {
           {/* Compliance Column */}
           <div className="flex flex-col gap-6">
             <h4 className="font-bold text-lg mb-6">Legal</h4>
-            <a 
-              href="https://forms.gle/YaXB1nhvNkimJGUT7" 
-              target="_blank" 
+            <a
+              href="https://forms.gle/YaXB1nhvNkimJGUT7"
+              target="_blank"
               rel="noopener noreferrer"
               className="inline-block hover:opacity-80 transition-opacity"
             >
@@ -174,10 +186,10 @@ const Footer = () => {
               ))}
             </nav>
           </div>
-          
-          <a 
-            href={DEV_WHATSAPP} 
-            target="_blank" 
+
+          <a
+            href={DEV_WHATSAPP}
+            target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-3 text-white/60 hover:text-white transition-colors text-sm md:text-base font-medium group"
           >
