@@ -7,7 +7,7 @@ import { es } from "date-fns/locale";
 
 import trans1 from "@/assets/secadoraindustrial.jpeg";
 import trans2 from "@/assets/plantapilado.jpeg";
-import trans3 from "@/assets/Añejadoras.jpeg";
+import trans3 from "@/assets/Anejadoras.jpeg";
 import anejo1 from "@/assets/Silosalmacenaje.jpeg";
 import anejo2 from "@/assets/Almacenarrozcascara.jpeg";
 import anejo3 from "@/assets/selectoraoptica.jpeg";
