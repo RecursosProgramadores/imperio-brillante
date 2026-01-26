@@ -51,7 +51,7 @@ const HeroSection = () => {
           </h1>
 
           <p className="text-base md:text-xl text-white/90 mb-6 md:mb-8 max-w-2xl animate-slide-up" style={{ animationDelay: "0.1s" }}>
-            Especialistas en secado, pilado y arroz añejo Altomonte. Transformamos arroz cáscara en arroz de alta calidad.
+            Especialistas en secado, pilado, selectado y añejado de arroz. Transformamos arroz cáscara en arroz de alta calidad.
           </p>
 
           {/* Mobile Image - Foreground (removido, ahora es fondo) */}

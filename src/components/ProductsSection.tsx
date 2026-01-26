@@ -1,6 +1,10 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
 import riceGrains from "@/assets/costalazul.png";
 import riceSack from "@/assets/costalnaranja.png";
+import riceSackNew from "@/assets/saconu.png";
 
 const WHATSAPP_LINK = "https://wa.me/51933897123?text=Hola,%20quiero%20comprar%20o%20cotizar%20Arroz%20Añejo%20Altomonte";
 
@@ -33,8 +37,37 @@ const benefits = [
 ];
 
 const ProductsSection = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
+  useEffect(() => {
+    if (!api) return;
+
+    const intervalId = setInterval(() => {
+      api.scrollNext();
+    }, 4000);
+
+    return () => clearInterval(intervalId);
+  }, [api]);
+
+  const productImages = [
+    { src: riceSackNew, alt: "Saco de Arroz Molino Imperio", hasBadge: true },
+    { src: riceSack, alt: "Saco de Arroz Alto Monte Naranja", hasBadge: true },
+    { src: riceGrains, alt: "Saco de Arroz Alto Monte Azul", hasBadge: true },
+  ];
+
   return (
-    <section id="productos" className="section-padding bg-background">
+    <section id="productos" className="section-padding bg-background overflow-hidden">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-10 md:mb-16">
@@ -45,33 +78,64 @@ const ProductsSection = () => {
             Arroz Añejo Alto Monte
           </h2>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-            Calidad superior que no se endurece ni se apelmaza.
+            Calidad superior que no se endurece y mantiene el grano suelto.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Images */}
-          <div className="relative order-2 lg:order-1">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <img
-                  src={riceSack}
-                  alt="Saco de Arroz Alto Monte 49KG"
-                  className="rounded-2xl shadow-xl w-full h-auto sm:h-64 object-contain sm:object-cover border border-border/50"
+          {/* Images Carousel */}
+          <div className="relative order-2 lg:order-1 w-full max-w-[500px] mx-auto lg:mx-0">
+            {/* Background Decorative Blob */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/5 rounded-full blur-3xl -z-10 animate-pulse"></div>
+
+            <Carousel
+              setApi={setApi}
+              opts={{
+                align: "center",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {productImages.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <div className="relative p-4 md:p-8 flex items-center justify-center min-h-[350px] md:min-h-[500px]">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className={cn(
+                          "w-full h-auto object-contain transition-transform duration-500",
+                          image.hasBadge ? "scale-105" : "scale-100"
+                        )}
+                        style={{
+                          filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.15))"
+                        }}
+                      />
+                      {image.hasBadge && (
+                        <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 bg-primary text-white px-5 py-2 md:px-6 md:py-3 rounded-2xl shadow-xl border-4 border-white transform rotate-3 z-10">
+                          <span className="text-xl md:text-2xl font-black">49</span>
+                          <span className="text-xs md:text-sm font-bold ml-1 uppercase">KG</span>
+                        </div>
+                      )}
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+
+            {/* Navigation Dots */}
+            <div className="flex justify-center gap-2 mt-4">
+              {productImages.map((_, i) => (
+                <button
+                  key={i}
+                  className={cn(
+                    "w-2 h-2 rounded-full transition-all duration-300",
+                    current === i ? "bg-primary w-6" : "bg-primary/20"
+                  )}
+                  onClick={() => api?.scrollTo(i)}
+                  aria-label={`Ir a imagen ${i + 1}`}
                 />
-                <div className="bg-primary text-primary-foreground p-4 rounded-2xl text-center shadow-lg">
-                  <span className="text-2xl md:text-3xl font-bold">49</span>
-                  <span className="text-base md:text-lg font-medium ml-1">KG</span>
-                  <p className="text-xs md:text-sm opacity-90">Presentación al por mayor</p>
-                </div>
-              </div>
-              <div className="hidden sm:block pt-8">
-                <img
-                  src={riceGrains}
-                  alt="Granos de Arroz Alto Monte Premium"
-                  className="rounded-2xl shadow-xl w-full h-auto sm:h-80 object-cover border border-border/50"
-                />
-              </div>
+              ))}
             </div>
           </div>
 
@@ -82,8 +146,8 @@ const ProductsSection = () => {
                 Origen en los valles de Ucayali
               </h3>
               <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-2xl">
-                Arroz cultivado con prácticas responsables en los fértiles valles de Ucayali.
-                Grano uniforme con excelente comportamiento en cocción: queda graneado y estable.
+                Arroz cultivado en los fertiles valles de Ucayali y seleccionado mediante procesos controlados.
+                Grano uniforme con excelente comportamiento en coccion: queda graneado y estable.
               </p>
             </div>
 

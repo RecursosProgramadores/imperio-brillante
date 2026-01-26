@@ -85,8 +85,8 @@ const Footer = () => {
               <img src={logoMolino} alt="Molino Imperio Logo" className="h-20 w-auto rounded-lg" />
             </a>
             <p className="text-white/70 text-sm leading-relaxed">
-              Especialistas en el procesamiento integral de arroz de alta calidad.
-              Transformamos arroz cáscara optimizando su valor con procesos técnicos avanzados.
+              Especialistas en el procesamiento integral de arroz bajo procesos controlados y eficientes. 
+              Transformamos arroz cáscara optimizando su valor en cada etapa.
             </p>
             <div className="flex items-center gap-4">
               {socialLinks.map((social) => (
@@ -130,7 +130,7 @@ const Footer = () => {
             <div className="flex flex-col gap-4">
               <div className="flex items-start gap-3 text-white/70 text-sm">
                 <MapPin className="w-5 h-5 text-primary shrink-0" />
-                <span>Carr. Federico Basadre Km 12, Pucallpa</span>
+                <span>Av. Shirambari Nro. 375, Yarinacocha, Pucallpa, Ucayali. Referencia: Carretera Federico Basadre Km. 6. Entrando a 300 metros lado derecho.</span>
               </div>
               <div className="flex flex-col gap-3">
                 <div className="flex items-start gap-3 text-white/70 text-sm">
@@ -150,7 +150,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3 text-white/70 text-sm">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                <span>contacto@molinoimperio.pe</span>
+                <span>ventas@molinoimperio.com</span>
               </div>
             </div>
           </div>

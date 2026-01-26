@@ -1,6 +1,6 @@
 import { CheckCircle, Shield, Award, TrendingUp, Target, Eye } from "lucide-react";
 import industrialMill from "@/assets/nosotros.jpeg";
-import riceSackImg from "@/assets/saconu.png";
+
 
 const features = [
   {
@@ -33,14 +33,7 @@ const AboutSection = () => {
           {/* Left Column: Image and Experience */}
           <div className="relative order-2 lg:order-1 pt-8 lg:pt-0">
             <div className="relative">
-              {/* Rice Sack Overlay - Lado Derecho Inferior */}
-              <div className="absolute -bottom-10 -right-8 w-40 md:w-56 lg:w-64 h-auto z-20 drop-shadow-[0_20px_20px_rgba(0,0,0,0.4)] pointer-events-none">
-                <img
-                  src={riceSackImg}
-                  alt="Saco de arroz Molino Imperio"
-                  className="w-full h-auto transform rotate-0"
-                />
-              </div>
+
 
               <div className="relative overflow-hidden rounded-[2.5rem] shadow-2xl border-[10px] border-white">
                 <img
@@ -72,10 +65,12 @@ const AboutSection = () => {
                 Molino <span className="text-primary italic">Imperio</span>
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Somos una empresa referente en el procesamiento integral de arroz,
-                enfocada en un manejo técnico avanzado que preserva la esencia natural del grano.
-                Nuestra pasión por la excelencia nos permite transformar cada cosecha en un
-                producto de valor excepcional para agricultores y mercados exigentes.
+                Somos una empresa molinera pionera en la region Ucayali,
+                referente en el procesamiento integral de arroz,
+                enfocada en un manejo tecnico que preserva la esencia
+                natural del grano. Nuestra pasión por la excelencia nos
+                permite transformar cada cosecha en un producto de valor
+                excepcional para agricultores y mercados exigentes.
               </p>
             </div>
 

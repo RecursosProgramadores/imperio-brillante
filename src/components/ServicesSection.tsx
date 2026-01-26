@@ -7,10 +7,12 @@ import { es } from "date-fns/locale";
 
 import trans1 from "@/assets/secadoraindustrial.jpeg";
 import trans2 from "@/assets/plantapilado.jpeg";
-import trans3 from "@/assets/Anejadoras.jpeg";
+import trans3 from "@/assets/MAquinasarrozpilado.jpg";
+import trans4 from "@/assets/arrozcascara.jpeg";
+import trans5 from "@/assets/arrozpilado.jpeg";
 import anejo1 from "@/assets/Silosalmacenaje.jpeg";
 import anejo2 from "@/assets/Almacenarrozcascara.jpeg";
-import anejo3 from "@/assets/selectoraoptica.jpeg";
+import anejo3 from "@/assets/Anejadoras.jpeg";
 
 const WHATSAPP_BASE = "https://wa.me/51933897123?text=";
 
@@ -18,9 +20,9 @@ const services = [
   {
     id: "transformacion1",
     title: "Transformación de Arroz Cáscara",
-    description: "Procesamos su arroz cáscara con tecnología de punta para obtener el máximo rendimiento de grano entero.",
+    description: "Procesamos su arroz cascara con procesos eficientes y cuidadosamente controlados para obtener el máximo rendimiento de grano entero.",
     icon: Wheat,
-    images: [trans1, trans2, trans3],
+    images: [trans1, trans2, trans3, trans4, trans5],
     features: [
       {
         icon: Timer,
@@ -43,7 +45,7 @@ const services = [
   {
     id: "anejo1",
     title: "Añejado de Arroz",
-    description: "Servicio de valor agregado que incrementa significativamente la calidad y el precio de su arroz.",
+    description: "Servicio de valor agregado al arroz pilado que incrementa significativamente la calidad y el precio de su arroz.",
     icon: Wind,
     images: [anejo1, anejo2, anejo3],
     features: [
@@ -55,7 +57,7 @@ const services = [
       {
         icon: Sparkles,
         title: "Mejor Cocción",
-        description: "El arroz añejo absorbe menos agua, queda más suelto."
+        description: "El arroz añejo absorbe mas agua, queda más suelto y graneado."
       },
       {
         icon: Timer,
@@ -93,7 +95,7 @@ const ServiceItem = ({ service, index }: { service: typeof services[0], index: n
                   <img
                     src={img}
                     alt={`${service.title} - ${idx + 1}`}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                    className="absolute inset-0 w-full h-full object-contain bg-black/5 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
@@ -162,7 +164,7 @@ const ServiceItem = ({ service, index }: { service: typeof services[0], index: n
             target="_blank"
             rel="noopener noreferrer"
           >
-            Solicitar cotización personalizada
+            Solicitar cotización
           </a>
         </Button>
       </div>

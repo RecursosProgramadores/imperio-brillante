@@ -7,22 +7,22 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Dirección",
-    content: "Carretera Federico Basadre Km 12, Pucallpa, Ucayali, Perú"
+    content: "Av. Shirambari Nro. 375, Yarinacocha, Pucallpa, Ucayali. Referencia: Carretera Federico Basadre Km. 6. Entrando a 300 metros lado derecho."
   },
   {
     icon: Phone,
     title: "Teléfono",
-    content: "+51 933 897 123"
+    content: "+51 933 897 123\n+51 961 502 572\n+51 964 421 656"
   },
   {
     icon: Mail,
     title: "Emails",
-    content: "ventas@molinoimperio.com  lidser.panduro@gmail.com"
+    content: "ventas@molinoimperio.com"
   },
   {
     icon: Clock,
     title: "Horario",
-    content: "Lunes a Sábado: 7:00 AM - 6:00 PM"
+    content: "Lunes a Sábado: 8:00 AM - 5:00 PM"
   }
 ];
 
@@ -60,7 +60,7 @@ const ContactSection = () => {
                     <h4 className="font-bold text-foreground text-sm tracking-tight">
                       {item.title}
                     </h4>
-                    <p className="text-sm text-muted-foreground font-medium">
+                    <p className="text-sm text-muted-foreground font-medium whitespace-pre-line">
                       {item.content}
                     </p>
                   </div>
